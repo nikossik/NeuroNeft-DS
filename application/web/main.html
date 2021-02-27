@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OilForecast by DataSatanists</title>
+    <script src='eel.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/styles/base.css">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/main.css">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/container.css">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/tester.css">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/price.css">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/buttons.css">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/inputs.css">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/variables.css">
+	<link rel="stylesheet" type="text/css" href="./assets/styles/pipeline.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
+    
+</head>
+<body>
+    <div class="container">
+		<section class="main">
+			<div class="tester" id="tester"></div>
+			<div class="pipeline">
+				<div class="oil"></div>
+			</div>
+			<div class="main__bottom">
+				<div class="oil -small -main__l"></div>
+
+				<div class="inputs">
+					<div class="oil -small -inputs__l"></div>
+					<div class="oil -small -inputs__l -first"></div>
+
+					<input type="date" class="input__date" id="date_1">
+					<input type="date" class="input__date" id="date_2">
+
+					<div class="oil -small -inputs__r"></div>
+				</div>	
+			
+				<div class="buttons">
+					<button class="btn" id="show">Show</button>
+					<button class="btn" id="reset">Reset</button>
+				</div>
+
+				<div class="price">
+					<div class="oil -small -price__l"></div>
+
+					<div id="price_1" class="price__block"><p class="price__text"></p></div>
+					<div id="price_2" class="price__block"><p class="price__text"></p></div>
+
+					<div class="oil -small -price__r"></div>
+				</div>
+
+				<div class="oil -small -main__r"></div>
+			</div>
+			<div class="pipeline">
+				<div class="oil -reverse"></div>
+			</div>
+		</section>
+	</div>
+    <script>window.resizable = false</script>
+    <script> 
+        async function print_graph() {
+
+
+            let date_1 = await eel.date_py(document.getElementById("date_1").value)();
+            let price_1 = await eel.price_x_py(document.getElementById("date_1").value)();
+            let date_2 = await eel.date_py(document.getElementById("date_2").value)();
+            let price_2 = await eel.price_x_py(document.getElementById("date_2").value)();
+            let XX = await eel.print_graphX_py(document.getElementById("date_1").value, document.getElementById("date_2").value)();
+            let yy = await eel.print_graphy_py(document.getElementById("date_1").value, document.getElementById("date_2").value)();
+
+            document.getElementById('price_1').style = "display: block;"
+            document.getElementById('price_2').style = "display: block;"
+
+            document.getElementById('price_1').innerHTML = '<p class="price__text">Цена нефти ' + date_1 + ' будет - ' + price_1 + '$</p>';
+            document.getElementById('price_2').innerHTML = '<p class="price__text">Цена нефти ' + date_2 + ' будет - ' + price_2 + '$</p>';
+
+            TESTER = document.getElementById('tester');
+            Plotly.newPlot( TESTER, [{
+            x: XX,
+            y: yy }], {
+            margin: { t: 0 } } );
+       }
+
+        function reload_page() {
+            document.location.reload();
+        }
+
+        jQuery('#show').on('click', function() {
+            print_graph();
+       })
+
+        jQuery('#reset').on('click', function() {
+            reload_page();
+       })
+
+    </script>  
+</body>
+</html>

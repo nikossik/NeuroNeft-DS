@@ -1,0 +1,155 @@
+.pipeline {
+	width: 100%;
+	height: 20px;
+	background-color: transparent;
+	border: 4px solid var(--c-black);
+	border-left: 0px;
+	border-right: 0px;
+	position: relative;
+}
+
+.oil {
+	position: absolute;
+	display: block;
+	background-color: var(--c-black);
+	height: 15px;
+	width: 20%;
+	border-radius: 10px 40px;
+
+	animation: oil_horizontal 30s infinite;
+}
+
+.oil.-small {
+	height: 20%;
+	width: 20px;
+
+	animation: oil_vertical 10s infinite;
+}
+
+.oil.-small.-main__l {
+	left: -40%;
+	height: 30.5%;
+	border-top-left-radius: 90px;
+	border-top-right-radius: 70px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 90px;
+}
+
+.oil.-small.-main__r {
+	right: -40%;
+	height: 30%;
+	border-top-left-radius: 80px;
+	border-top-right-radius: 29px;
+	border-bottom-right-radius: 45px;
+	border-bottom-left-radius: 60px;
+
+	animation: oil_vertical 17s infinite reverse;
+}
+
+.oil.-small.-inputs__l {
+	left: -16.5%;
+	height: 12.%;
+	border-top-left-radius: 70px;
+	border-top-right-radius: 21px;
+	border-bottom-right-radius: 65px;
+	border-bottom-left-radius: 10px;
+
+	animation: oil_vertical 25s infinite reverse;
+}
+
+.oil.-small.-inputs__l.-first {
+	height: 45px;
+
+	animation: oil_vertical 15s infinite;
+}
+
+.oil.-small.-inputs__r {
+	right: -16.5%;
+	height: 28%;
+	border-top-left-radius: 40px;
+	border-top-right-radius: 21px;
+	border-bottom-right-radius: 75px;
+	border-bottom-left-radius: 10px;
+}
+
+.oil.-small.-price__l {
+	left: -14.5%;
+	height: 26.5%;
+
+	animation: oil_vertical 10s infinite reverse;
+}
+
+.oil.-small.-price__r {
+	right: -14.5%;
+	height: 75px;
+}
+
+.oil.-reverse {
+	width: 14%;
+	animation: oil_horizontal 35s infinite reverse;
+	border-radius: 35px 20px;
+}
+
+@keyframes oil_horizontal {
+	0% {
+		left: 0px;
+	}
+
+	10% {
+		left: 20%;
+	}
+
+	20% {
+		left: 40%;
+	}
+
+	30% {
+		left: 60%
+	}
+
+	40% {
+		left: 80%;
+	}
+
+	50% {
+		left: 60%;
+	}
+
+	60% {
+		left: 40%;
+	}
+
+	70% {
+		left: 20%;
+	}
+
+	80% {
+		left: 0px;
+	}
+
+	100% {
+		left: 0px;
+	}
+}
+
+@keyframes oil_vertical {
+	0% {
+		bottom: 0px;
+	}
+
+	25% {
+		bottom: 25%;
+	}
+
+	50% {
+		bottom: 50%;
+	}
+
+	75% {
+		bottom: 70%
+	}
+
+	100% {
+		bottom: 0%;
+	}
+}

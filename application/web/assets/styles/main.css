@@ -1,0 +1,40 @@
+.main {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 0px;
+}
+
+.main__bottom {
+	height: calc(50% - 40px);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 55%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.main__bottom:before {
+	position: absolute;
+	left: -40%;
+	display: block;
+	content: "";
+	height: 100%;
+	width: 15px;
+	border-right: 4px solid var(--c-black);
+	border-left: 4px solid var(--c-black);
+}
+
+.main__bottom:after {
+	position: absolute;
+	right: -40%;
+	display: block;
+	content: "";
+	height: 100%;
+	width: 15px;
+	border-left: 4px solid var(--c-black);
+	border-right: 4px solid var(--c-black);
+}
